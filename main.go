@@ -23,8 +23,9 @@ func main() {
 
 	http.HandleFunc("/DescribeConfig", describeConfig)
 	http.HandleFunc("/CreateConfig", createConfig)
-	http.HandleFunc("/updateConfig", updateConfig)
+	http.HandleFunc("/UpdateConfig", updateConfig)
 
+	fmt.Println("AB Test Server Listening ...")
 	http.ListenAndServe(":9527", nil)
 }
 
