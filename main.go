@@ -1,12 +1,20 @@
 package main
 
 import (
+	"fmt"
+	"net/http"
+	"os"
+
 	"abtest-server/db"
 	"abtest-server/service"
 
-	"fmt"
-	"net/http"
+	"github.com/go-abtest/sdk"
 )
+
+func init() {
+	// DBPath 实验配置中心
+	sdk.DBPath = os.Getenv("GOPATH") + "/src" + "/abtest-server/db/"
+}
 
 func main() {
 	// PM设计实验，生成实验配置

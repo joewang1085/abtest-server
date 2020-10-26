@@ -5,15 +5,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"os"
 
 	"github.com/go-abtest/sdk"
 )
-
-func init() {
-	// DBPath 实验配置中心
-	sdk.DBPath = os.Getenv("GOPATH") + "/src" + "/abtest-server/db/"
-}
 
 // CreateABTestConfig 创建新的实验配置
 func CreateABTestConfig(projectID string, zones []*sdk.Zone) {
