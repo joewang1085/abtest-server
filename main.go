@@ -10,11 +10,13 @@ import (
 )
 
 func init() {
+
 	// DBPath 实验配置中心
 	service.DBPath = os.Getenv("GOPATH") + "/src" + "/abtest-server/db/"
 }
 
 func main() {
+
 	// PM设计实验，生成实验配置
 	fmt.Println("PM 通过 ABT Server 设计实验，生成实验配置，入库")
 	db.DataInit()
