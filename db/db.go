@@ -175,20 +175,21 @@ func DataInit() {
 	}
 
 	/*
-			*
-	Project: Display
-	实验规则：
-	All users
-	|||
-	|||
-	//\\
-	//\\
-	//\\
-	//\\
-	ABA1A2
-	(A)(B)(A)(A)
-	[1.20] [21,60][61,80][81,100]
-			*
+		*
+							Project: Display
+								实验规则：
+								All users
+								[1,100]
+								|||
+								|||
+								//\\
+							/	/	\	\
+					/		/			\		\
+				/		/					\		\
+				A		B					A1		A2
+				(A)		(B)					(A)		(A)
+			[1.20]		[21,60]			[61,80]		[81,100]
+		*
 	*/
 	displayA := &sdk.Zone{
 		ProjectID: "Display",
@@ -265,20 +266,18 @@ func DataInit() {
 
 	labSearchZones := []*sdk.Zone{
 		/*
-						*
-								project search
-								实验规则：
-									    all users
-									    [1.100]
-										   |
-									   /       \
-									  /         \
-									 |           |
-									 A           B
-			            layer "1":[1,50]     layer "1":[51,100]
-
-
-						*
+			*
+						project search
+						实验规则：
+						all users
+						[1.100]
+							|
+							/\
+						/		\
+						|		|
+						A		B
+			layer "1":[1,50]	layer "1":[51,100]
+			*
 		*/
 		&sdk.Zone{
 			ProjectID: "search",
