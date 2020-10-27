@@ -12,30 +12,32 @@ import (
 func DataInit() {
 
 	/*
-		*
-										Project : Order
-											实验规则：
-											all users
-											[1,100]
-												|
-												/\
-										/					\
-									/					/		\
-								/					/				\
-								|					|				|
-								A1				B1-1				B1-2
-							layer "1":[1,50]	layer "1":[51,75] 	layer "1":[76,100]
-								|						|		\/		|
-							/		\					|		/\		|
-						|				|				||				||
-						A2-1			A2-2			B2-1			B2-2
-			layer "A2":[1,50]	layer "A2":[51,100]	layer "B2":[1,50]	layer "B2":[51,100]
-														\				/
-															\		/
-																\/
-																B3
-														layer "B3": [1:100]
-		*
+
+						Project : Order
+								实验规则：
+								all users
+								[1,100]
+									|
+									/\
+							/					\
+						/					/		\
+				/					/				\
+				|					|				|
+				A1				B1-1				B1-2
+				layer "1"		layer "1"			layer "1"
+				[1,50]			[51,75]				[76,100]
+				|						|		\/		|
+			/		\					|		/\		|
+		|				|				||				||
+		A2-1			A2-2			B2-1			B2-2
+		layer "A2"		layer "A2"		layer "B2"		layer "B2"
+		[1,50]			[51,100]		[1,50]			[51,100]
+										\				/
+											\		/
+												\/
+												B3
+												layer "B3"
+												[1:100]
 	*/
 	orderA1 := &sdk.Zone{
 		ProjectID: "Order",
@@ -175,21 +177,19 @@ func DataInit() {
 	}
 
 	/*
-		*
-							Project: Display
-								实验规则：
-								All users
-								[1,100]
-								|||
-								|||
-								//\\
-							/	/	\	\
-					/		/			\		\
-				/		/					\		\
-				A		B					A1		A2
-				(A)		(B)					(A)		(A)
-			[1.20]		[21,60]			[61,80]		[81,100]
-		*
+					Project: Display
+						实验规则：
+						All users
+						[1,100]
+						|||
+						|||
+						//\\
+					/	/	\	\
+			/		/			\		\
+		/		/					\		\
+		A		B					A1		A2
+		(A)		(B)					(A)		(A)
+		[1.20]		[21,60]			[61,80]		[81,100]
 	*/
 	displayA := &sdk.Zone{
 		ProjectID: "Display",
@@ -266,18 +266,17 @@ func DataInit() {
 
 	labSearchZones := []*sdk.Zone{
 		/*
-			*
-						project search
-						实验规则：
-						all users
-						[1.100]
-							|
-							/\
-						/		\
-						|		|
-						A		B
-			layer "1":[1,50]	layer "1":[51,100]
-			*
+				project search
+				实验规则：
+				all users
+				[1.100]
+					|
+					/\
+				/		\
+				|		|
+				A		B
+			layer "1"	layer "1"
+			[1,50]		[51,100]
 		*/
 		&sdk.Zone{
 			ProjectID: "search",
