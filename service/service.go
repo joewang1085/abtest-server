@@ -23,7 +23,7 @@ func CreateABTestConfig(projectID string, zones []*sdk.Zone) {
 	if err != nil {
 		log.Fatal("CreateABTestConfig call json.Marshal failed , error:", err)
 	}
-	ioutil.WriteFile(DBPath+projectID, content, 0644)
+	ioutil.WriteFile(DBPath+projectID+".json", content, 0644)
 
 	// 校验配置正确性
 	if !checkProjectABTConfigValid(projectID, zones) {
@@ -58,7 +58,7 @@ func checkProjectABTConfigValid(projectID string, zones []*sdk.Zone) bool {
 
 // DescribeABTestConfig 返回 json
 func DescribeABTestConfig(projectID string) []byte {
-	content, err := ioutil.ReadFile(DBPath + projectID)
+	content, err := ioutil.ReadFile(DBPath + projectID + ".json")
 	if err != nil {
 		log.Fatal("doSyncDB call ioutil.ReadFile failed, error:", err)
 	}
