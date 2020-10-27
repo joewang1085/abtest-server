@@ -9,16 +9,21 @@ import (
 	"github.com/go-abtest/sdk"
 )
 
+var (
+	// DBPath ...
+	DBPath string
+)
+
 // CreateABTestConfig 创建新的实验配置
 func CreateABTestConfig(projectID string, zones []*sdk.Zone) {
-	fmt.Println("sdk.DBPath", sdk.DBPath)
+	fmt.Println("DBPath", DBPath)
 
 	// 入库
 	content, err := json.Marshal(zones)
 	if err != nil {
 		log.Fatal("CreateABTestConfig call json.Marshal failed , error:", err)
 	}
-	ioutil.WriteFile(sdk.DBPath+projectID, content, 0644)
+	ioutil.WriteFile(DBPath+projectID, content, 0644)
 
 	// 校验配置正确性
 	if !checkProjectABTConfigValid(projectID, zones) {
@@ -53,7 +58,7 @@ func checkProjectABTConfigValid(projectID string, zones []*sdk.Zone) bool {
 
 // DescribeABTestConfig 返回 json
 func DescribeABTestConfig(projectID string) []byte {
-	content, err := ioutil.ReadFile(sdk.DBPath + projectID)
+	content, err := ioutil.ReadFile(DBPath + projectID)
 	if err != nil {
 		log.Fatal("doSyncDB call ioutil.ReadFile failed, error:", err)
 	}

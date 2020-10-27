@@ -7,13 +7,11 @@ import (
 
 	"abtest-server/db"
 	"abtest-server/service"
-
-	"github.com/go-abtest/sdk"
 )
 
 func init() {
 	// DBPath 实验配置中心
-	sdk.DBPath = os.Getenv("GOPATH") + "/src" + "/abtest-server/db/"
+	service.DBPath = os.Getenv("GOPATH") + "/src" + "/abtest-server/db/"
 }
 
 func main() {
