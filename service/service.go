@@ -60,12 +60,12 @@ func checkProjectABTConfigValid(projectID string, zones []*sdk.Zone) bool {
 func DescribeABTestConfig(projectID string) []byte {
 	content, err := ioutil.ReadFile(DBPath + projectID + ".json")
 	if err != nil {
-		log.Fatal("doSyncDB call ioutil.ReadFile failed, error:", err)
+		log.Fatal("DescribeABTestConfig call ioutil.ReadFile failed, error:", err)
 	}
 	zones := make([]*sdk.Zone, 0)
 	err = json.Unmarshal(content, &zones)
 	if err != nil {
-		log.Fatal("doSyncDB call json.Unmarshal failed, error:", err)
+		log.Fatal("DescribeABTestConfig call json.Unmarshal failed, error:", err)
 	}
 
 	return content
