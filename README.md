@@ -39,7 +39,7 @@
 ![avatar](one.png)
 
 # 两个因素AB test设计
-如下图
+如下图  
 ![avatar](two.png)
 
 
