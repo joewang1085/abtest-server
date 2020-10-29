@@ -120,7 +120,70 @@ default:
 4. PM修改实验配置，将流量全部导入AE策略,
 5. 开发删除实验代码，并使用“AE”策略，迭代上线
 6. PM删除或者修改实验配置，停止实验或者接着进行别的实验 
-# 复杂的两个因素AB test设计
+
+特殊场景：如果背景色只有“黑色”和“白色”，而字体与背景不能同颜色，否则功能异常.   
+所以流量分为 4 种组合：AD、BD、BE、CE.分别对比四种种组合的实验结果，选取最优组合策略.    
+![avatar](three.png)     
+这种实验场景暂时不支持，因为进入每一层的流量是相同的，因此     
+
+但是可以将上述需求设计成如下所示：  
+![avatar](four.png) 
+同时需要开发在业务里面实现上述逻辑，示例如下：   
+```
+
+...省略上下文进入设置字体颜色...
+func Layer1(...) {
+targetZone := sdk.GetABTZone(hashkey, "Layer1 ID")
+	switch targetZone.Value {
+	case "A":
+		setColor("字体 黑色")
+		return Layer2-1(...)
+	case "B" :
+		setColor("字体 红色")
+		return Layer2-2(...)
+	case "B" :
+		setColor("字体 白色")
+		return Layer2-3(...)
+	default:
+		setColor("字体 默认颜色")
+		return setBKColor("背景 默认颜色")
+	}
+}
+
+func Layer2-1(...) {
+targetZone := sdk.GetABTZone(hashkey, "Layer1 ID")
+	switch targetZone.Value {
+	case "D":
+		return setBKColor("背景 白色")
+	default:
+		return setBKColor("背景 默认颜色")
+	}
+}
+
+func Layer2-2(...) {
+targetZone := sdk.GetABTZone(hashkey, "Layer1 ID")
+	switch targetZone.Value {
+	case "D":
+		return setBKColor("背景 白色")
+	case "E" :
+		return setColor("字体 黑色")
+	default:
+		return setBKColor("背景 默认颜色")
+	}
+}
+
+func Layer2-3(...) {
+targetZone := sdk.GetABTZone(hashkey, "Layer1 ID")
+	switch targetZone.Value {
+	case "E" :
+		return setColor("字体 黑色")
+	default:
+		return setBKColor("背景 默认颜色")
+	}
+}
+...省略上下文...
+```
+
 
 # ab test server demo 说明
 1. db.Datainit() is a mock of database
