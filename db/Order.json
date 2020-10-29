@@ -1,1 +1,223 @@
-[{"ProjectID":"Order","LayerID":"1","ParentZones":null,"TotalWeight":100,"ZoneID":"A","Min":1,"Max":50,"Value":"A1","Tag":"A1","UserGroups":null},{"ProjectID":"Order","LayerID":"A2","ParentZones":null,"TotalWeight":100,"ZoneID":"A2-1","Min":1,"Max":50,"Value":"A2-1","Tag":"A2-1","UserGroups":null},{"ProjectID":"Order","LayerID":"A2","ParentZones":null,"TotalWeight":100,"ZoneID":"A2-2","Min":51,"Max":100,"Value":"A2-2","Tag":"A2-2","UserGroups":null},{"ProjectID":"Order","LayerID":"1","ParentZones":null,"TotalWeight":100,"ZoneID":"B1-1","Min":51,"Max":75,"Value":"B1-1","Tag":"B1-1","UserGroups":null},{"ProjectID":"Order","LayerID":"1","ParentZones":null,"TotalWeight":100,"ZoneID":"B1-2","Min":76,"Max":100,"Value":"B1-2","Tag":"B1-2","UserGroups":null},{"ProjectID":"Order","LayerID":"B2","ParentZones":[{"ProjectID":"Order","LayerID":"1","ParentZones":null,"TotalWeight":100,"ZoneID":"B1-2","Min":76,"Max":100,"Value":"B1-2","Tag":"B1-2","UserGroups":null},{"ProjectID":"Order","LayerID":"1","ParentZones":null,"TotalWeight":100,"ZoneID":"B1-1","Min":51,"Max":75,"Value":"B1-1","Tag":"B1-1","UserGroups":null}],"TotalWeight":100,"ZoneID":"B2-1","Min":1,"Max":50,"Value":"B2-1","Tag":"B2-1","UserGroups":null},{"ProjectID":"Order","LayerID":"B2","ParentZones":[{"ProjectID":"Order","LayerID":"1","ParentZones":null,"TotalWeight":100,"ZoneID":"B1-2","Min":76,"Max":100,"Value":"B1-2","Tag":"B1-2","UserGroups":null},{"ProjectID":"Order","LayerID":"1","ParentZones":null,"TotalWeight":100,"ZoneID":"B1-1","Min":51,"Max":75,"Value":"B1-1","Tag":"B1-1","UserGroups":null}],"TotalWeight":100,"ZoneID":"B2-2","Min":51,"Max":100,"Value":"B2-2","Tag":"B2-2","UserGroups":null},{"ProjectID":"Order","LayerID":"B3","ParentZones":[{"ProjectID":"Order","LayerID":"B2","ParentZones":[{"ProjectID":"Order","LayerID":"1","ParentZones":null,"TotalWeight":100,"ZoneID":"B1-2","Min":76,"Max":100,"Value":"B1-2","Tag":"B1-2","UserGroups":null},{"ProjectID":"Order","LayerID":"1","ParentZones":null,"TotalWeight":100,"ZoneID":"B1-1","Min":51,"Max":75,"Value":"B1-1","Tag":"B1-1","UserGroups":null}],"TotalWeight":100,"ZoneID":"B2-2","Min":51,"Max":100,"Value":"B2-2","Tag":"B2-2","UserGroups":null},{"ProjectID":"Order","LayerID":"B2","ParentZones":[{"ProjectID":"Order","LayerID":"1","ParentZones":null,"TotalWeight":100,"ZoneID":"B1-2","Min":76,"Max":100,"Value":"B1-2","Tag":"B1-2","UserGroups":null},{"ProjectID":"Order","LayerID":"1","ParentZones":null,"TotalWeight":100,"ZoneID":"B1-1","Min":51,"Max":75,"Value":"B1-1","Tag":"B1-1","UserGroups":null}],"TotalWeight":100,"ZoneID":"B2-1","Min":1,"Max":50,"Value":"B2-1","Tag":"B2-1","UserGroups":null}],"TotalWeight":100,"ZoneID":"B3","Min":1,"Max":100,"Value":"B3","Tag":"B3","UserGroups":null}]
+[
+    {
+        "ProjectID": "Order",
+        "LayerID": "1",
+        "ParentZones": null,
+        "TotalWeight": 100,
+        "ZoneID": "A",
+        "Min": 1,
+        "Max": 50,
+        "Value": "A1",
+        "Tag": "A1",
+        "UserGroups": null
+    },
+    {
+        "ProjectID": "Order",
+        "LayerID": "A2",
+        "ParentZones": null,
+        "TotalWeight": 100,
+        "ZoneID": "A2-1",
+        "Min": 1,
+        "Max": 50,
+        "Value": "A2-1",
+        "Tag": "A2-1",
+        "UserGroups": null
+    },
+    {
+        "ProjectID": "Order",
+        "LayerID": "A2",
+        "ParentZones": null,
+        "TotalWeight": 100,
+        "ZoneID": "A2-2",
+        "Min": 51,
+        "Max": 100,
+        "Value": "A2-2",
+        "Tag": "A2-2",
+        "UserGroups": null
+    },
+    {
+        "ProjectID": "Order",
+        "LayerID": "1",
+        "ParentZones": null,
+        "TotalWeight": 100,
+        "ZoneID": "B1-1",
+        "Min": 51,
+        "Max": 75,
+        "Value": "B1-1",
+        "Tag": "B1-1",
+        "UserGroups": null
+    },
+    {
+        "ProjectID": "Order",
+        "LayerID": "1",
+        "ParentZones": null,
+        "TotalWeight": 100,
+        "ZoneID": "B1-2",
+        "Min": 76,
+        "Max": 100,
+        "Value": "B1-2",
+        "Tag": "B1-2",
+        "UserGroups": null
+    },
+    {
+        "ProjectID": "Order",
+        "LayerID": "B2",
+        "ParentZones": [
+            {
+                "ProjectID": "Order",
+                "LayerID": "1",
+                "ParentZones": null,
+                "TotalWeight": 100,
+                "ZoneID": "B1-2",
+                "Min": 76,
+                "Max": 100,
+                "Value": "B1-2",
+                "Tag": "B1-2",
+                "UserGroups": null
+            },
+            {
+                "ProjectID": "Order",
+                "LayerID": "1",
+                "ParentZones": null,
+                "TotalWeight": 100,
+                "ZoneID": "B1-1",
+                "Min": 51,
+                "Max": 75,
+                "Value": "B1-1",
+                "Tag": "B1-1",
+                "UserGroups": null
+            }
+        ],
+        "TotalWeight": 100,
+        "ZoneID": "B2-1",
+        "Min": 1,
+        "Max": 50,
+        "Value": "B2-1",
+        "Tag": "B2-1",
+        "UserGroups": null
+    },
+    {
+        "ProjectID": "Order",
+        "LayerID": "B2",
+        "ParentZones": [
+            {
+                "ProjectID": "Order",
+                "LayerID": "1",
+                "ParentZones": null,
+                "TotalWeight": 100,
+                "ZoneID": "B1-2",
+                "Min": 76,
+                "Max": 100,
+                "Value": "B1-2",
+                "Tag": "B1-2",
+                "UserGroups": null
+            },
+            {
+                "ProjectID": "Order",
+                "LayerID": "1",
+                "ParentZones": null,
+                "TotalWeight": 100,
+                "ZoneID": "B1-1",
+                "Min": 51,
+                "Max": 75,
+                "Value": "B1-1",
+                "Tag": "B1-1",
+                "UserGroups": null
+            }
+        ],
+        "TotalWeight": 100,
+        "ZoneID": "B2-2",
+        "Min": 51,
+        "Max": 100,
+        "Value": "B2-2",
+        "Tag": "B2-2",
+        "UserGroups": null
+    },
+    {
+        "ProjectID": "Order",
+        "LayerID": "B3",
+        "ParentZones": [
+            {
+                "ProjectID": "Order",
+                "LayerID": "B2",
+                "ParentZones": [
+                    {
+                        "ProjectID": "Order",
+                        "LayerID": "1",
+                        "ParentZones": null,
+                        "TotalWeight": 100,
+                        "ZoneID": "B1-2",
+                        "Min": 76,
+                        "Max": 100,
+                        "Value": "B1-2",
+                        "Tag": "B1-2",
+                        "UserGroups": null
+                    },
+                    {
+                        "ProjectID": "Order",
+                        "LayerID": "1",
+                        "ParentZones": null,
+                        "TotalWeight": 100,
+                        "ZoneID": "B1-1",
+                        "Min": 51,
+                        "Max": 75,
+                        "Value": "B1-1",
+                        "Tag": "B1-1",
+                        "UserGroups": null
+                    }
+                ],
+                "TotalWeight": 100,
+                "ZoneID": "B2-2",
+                "Min": 51,
+                "Max": 100,
+                "Value": "B2-2",
+                "Tag": "B2-2",
+                "UserGroups": null
+            },
+            {
+                "ProjectID": "Order",
+                "LayerID": "B2",
+                "ParentZones": [
+                    {
+                        "ProjectID": "Order",
+                        "LayerID": "1",
+                        "ParentZones": null,
+                        "TotalWeight": 100,
+                        "ZoneID": "B1-2",
+                        "Min": 76,
+                        "Max": 100,
+                        "Value": "B1-2",
+                        "Tag": "B1-2",
+                        "UserGroups": null
+                    },
+                    {
+                        "ProjectID": "Order",
+                        "LayerID": "1",
+                        "ParentZones": null,
+                        "TotalWeight": 100,
+                        "ZoneID": "B1-1",
+                        "Min": 51,
+                        "Max": 75,
+                        "Value": "B1-1",
+                        "Tag": "B1-1",
+                        "UserGroups": null
+                    }
+                ],
+                "TotalWeight": 100,
+                "ZoneID": "B2-1",
+                "Min": 1,
+                "Max": 50,
+                "Value": "B2-1",
+                "Tag": "B2-1",
+                "UserGroups": null
+            }
+        ],
+        "TotalWeight": 100,
+        "ZoneID": "B3",
+        "Min": 1,
+        "Max": 100,
+        "Value": "B3",
+        "Tag": "B3",
+        "UserGroups": null
+    }
+]
