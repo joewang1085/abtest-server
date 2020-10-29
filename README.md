@@ -192,6 +192,11 @@ targetZone := sdk.GetABTZone(hashkey, "Layer1 ID")
 # how to run
 1. go run main.go
 
+# 性能设计
+// TODO
+# 稳定性设计 
+// TODO
+
 # 参考链接
 ```
 https://tech.youzan.com/abtest-for-growth/
