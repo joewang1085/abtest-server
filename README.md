@@ -80,6 +80,7 @@ default:
 6. PM删除或者修改实验配置，停止实验或者接着进行别的实验
 
 # 两个因素AB test设计
+// TODO: 冲突的关系待思考
 举例: 页面字体颜色与背景色 AB test 设计.  
 1. PM通过AB test server 生成实验配置，并将需求告知开发，实验配置构思如下：
 ![avatar](two.png)  
