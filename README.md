@@ -87,12 +87,9 @@ default:
 2. 开发人员开发实验业务代码，在返回首页的代码增加实验分支逻辑，通过sdk 对流量分流，代码结构如下：
 ```
 ...省略上下文进入设置字体颜色...
-// 根据hashkey(globalID、date等)和layerID, 获取随机分流的域. 前提是需要开发通过实验配置能理解知道当前的实验所在层的层ID。
 targetZone := sdk.GetABTZone(hashkey, layerID)
-// targetZone.Value 是sdk根据实验配置返回的一个符号标志，用于实验匹配，可以自定义
 switch targetZone.Value {
 case "A":
-	// 数据采点，记录用户使用“原页面”。数据采点也可以在一个公共收口出统一上报，这样更合理。
 	pushLabData(...)
 	return "字体 黑色"
 case "B" :
@@ -101,23 +98,18 @@ case "B" :
 case "C":
 	pushLabData(...)
 	return "字体 白色"
-// default 分支必须要有，保证业务正常
 default:
 	return "默认字体颜色"
 }
 ...省略中间代码进入设置背景颜色...
-// 根据hashkey(globalID、date等)和layerID, 获取随机分流的域. 前提是需要开发通过实验配置能理解知道当前的实验所在层的层ID。
 targetZone := sdk.GetABTZone(hashkey, layerID)
-// targetZone.Value 是sdk根据实验配置返回的一个符号标志，用于实验匹配，可以自定义
 switch targetZone.Value {
 case "E":
-	// 数据采点，记录用户使用“原页面”。数据采点也可以在一个公共收口出统一上报，这样更合理。
 	pushLabData(...)
-	return "背景 白色"
+	return "背景 黄色"
 case "D" :
 	pushLabData(...)
-	return "背景 黑色"
-// default 分支必须要有，保证业务正常
+	return "背景 绿色"
 default:
 	return "默认字体颜色"
 }
@@ -128,6 +120,7 @@ default:
 4. PM修改实验配置，将流量全部导入AE策略,
 5. 开发删除实验代码，并使用“AE”策略，迭代上线
 6. PM删除或者修改实验配置，停止实验或者接着进行别的实验 
+# 复杂的两个因素AB test设计
 
 # ab test server demo 说明
 1. db.Datainit() is a mock of database
