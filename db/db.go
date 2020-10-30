@@ -12,37 +12,12 @@ import (
 func DataInit() {
 
 	/*
-
-						Project : Order
-								实验规则：
-								all users
-								[1,100]
-									|
-									/\
-							/					\
-						/					/		\
-				/					/				\
-				|					|				|
-				A1				B1-1				B1-2
-				layer "1"		layer "1"			layer "1"
-				[1,50]			[51,75]				[76,100]
-				|						|		\/		|
-			/		\					|		/\		|
-		|				|				||				||
-		A2-1			A2-2			B2-1			B2-2
-		layer "A2"		layer "A2"		layer "B2"		layer "B2"
-		[1,50]			[51,100]		[1,50]			[51,100]
-										\				/
-											\		/
-												\/
-												B3
-												layer "B3"
-												[1:100]
+		Home
 	*/
-	orderA1 := &sdk.Zone{
-		ProjectID: "Order",
+	homeLayer1ZoneA := &sdk.Zone{
+		ProjectID: "Home",
 		Layer: sdk.Layer{
-			LayerID:     "1",
+			LayerID:     "Layer1",
 			ParentZones: nil,
 			TotalWeight: 100,
 		},
@@ -50,298 +25,343 @@ func DataInit() {
 
 		Weight: sdk.Weight{
 			Min: 1,
-			Max: 50,
-		},
-
-		Value: "A1",
-		Tag:   "A1",
-	}
-	orderA2_1 := &sdk.Zone{
-		ProjectID: "Order",
-		Layer: sdk.Layer{
-			LayerID:     "A2",
-			ParentZones: nil,
-			TotalWeight: 100,
-		},
-		ZoneID: "A2-1",
-
-		Weight: sdk.Weight{
-			Min: 1,
-			Max: 50,
-		},
-
-		Value: "A2-1",
-		Tag:   "A2-1",
-	}
-	orderA2_2 := &sdk.Zone{
-		ProjectID: "Order",
-		Layer: sdk.Layer{
-			LayerID:     "A2",
-			ParentZones: nil,
-			TotalWeight: 100,
-		},
-		ZoneID: "A2-2",
-
-		Weight: sdk.Weight{
-			Min: 51,
-			Max: 100,
-		},
-
-		Value: "A2-2",
-		Tag:   "A2-2",
-	}
-	orderB1_1 := &sdk.Zone{
-		ProjectID: "Order",
-		Layer: sdk.Layer{
-			LayerID:     "1",
-			ParentZones: nil,
-			TotalWeight: 100,
-		},
-		ZoneID: "B1-1",
-
-		Weight: sdk.Weight{
-			Min: 51,
-			Max: 75,
-		},
-
-		Value: "B1-1",
-		Tag:   "B1-1",
-	}
-	orderB1_2 := &sdk.Zone{
-		ProjectID: "Order",
-		Layer: sdk.Layer{
-			LayerID:     "1",
-			ParentZones: nil,
-			TotalWeight: 100,
-		},
-		ZoneID: "B1-2",
-
-		Weight: sdk.Weight{
-			Min: 76,
-			Max: 100,
-		},
-
-		Value: "B1-2",
-		Tag:   "B1-2",
-	}
-	orderB2_1 := &sdk.Zone{
-		ProjectID: "Order",
-		Layer: sdk.Layer{
-			LayerID:     "B2",
-			ParentZones: []*sdk.Zone{orderB1_2, orderB1_1},
-			TotalWeight: 100,
-		},
-		ZoneID: "B2-1",
-
-		Weight: sdk.Weight{
-			Min: 1,
-			Max: 50,
-		},
-
-		Value: "B2-1",
-		Tag:   "B2-1",
-	}
-	orderB2_2 := &sdk.Zone{
-		ProjectID: "Order",
-		Layer: sdk.Layer{
-			LayerID:     "B2",
-			ParentZones: []*sdk.Zone{orderB1_2, orderB1_1},
-			TotalWeight: 100,
-		},
-		ZoneID: "B2-2",
-
-		Weight: sdk.Weight{
-			Min: 51,
-			Max: 100,
-		},
-
-		Value: "B2-2",
-		Tag:   "B2-2",
-	}
-	orderB3 := &sdk.Zone{
-		ProjectID: "Order",
-		Layer: sdk.Layer{
-			LayerID:     "B3",
-			ParentZones: []*sdk.Zone{orderB2_2, orderB2_1},
-			TotalWeight: 100,
-		},
-		ZoneID: "B3",
-
-		Weight: sdk.Weight{
-			Min: 1,
-			Max: 100,
-		},
-
-		Value: "B3",
-		Tag:   "B3",
-	}
-
-	/*
-					Project: Display
-						实验规则：
-						All users
-						[1,100]
-						|||
-						|||
-						//\\
-					/	/	\	\
-			/		/			\		\
-		/		/					\		\
-		A		B					A1		A2
-		(A)		(B)					(A)		(A)
-		[1.20]		[21,60]			[61,80]		[81,100]
-	*/
-	displayA := &sdk.Zone{
-		ProjectID: "Display",
-		Layer: sdk.Layer{
-			LayerID:     "1",
-			ParentZones: nil,
-			TotalWeight: 100,
-		},
-		ZoneID: "A",
-
-		Weight: sdk.Weight{
-			Min: 1,
-			Max: 20,
+			Max: 40,
 		},
 
 		Value:      "A",
-		Tag:        "A",
-		UserGroups: []string{"All"},
+		Tag:        "原主页",
+		UserGroups: []string{},
 	}
-	displayB := &sdk.Zone{
-		ProjectID: "Display",
+	homeLayer1ZoneB := &sdk.Zone{
+		ProjectID: "Home",
 		Layer: sdk.Layer{
-			LayerID:     "1",
+			LayerID:     "Layer1",
 			ParentZones: nil,
 			TotalWeight: 100,
 		},
 		ZoneID: "B",
 
 		Weight: sdk.Weight{
-			Min: 21,
-			Max: 60,
+			Min: 41,
+			Max: 70,
 		},
 
 		Value:      "B",
-		Tag:        "B",
-		UserGroups: []string{"VIP", "Frequent"},
+		Tag:        "新主页",
+		UserGroups: []string{},
 	}
-	displayA1 := &sdk.Zone{
-		ProjectID: "Display",
+	homeLayer1ZoneC := &sdk.Zone{
+		ProjectID: "Home",
 		Layer: sdk.Layer{
-			LayerID:     "1",
+			LayerID:     "Layer1",
 			ParentZones: nil,
 			TotalWeight: 100,
 		},
-		ZoneID: "A1",
+		ZoneID: "C",
 
 		Weight: sdk.Weight{
-			Min: 61,
-			Max: 80,
+			Min: 71,
+			Max: 85,
 		},
 
-		Value:      "A",
-		Tag:        "A1",
-		UserGroups: []string{"VIP", "Frequent"},
+		Value:      "C",
+		Tag:        "原主页",
+		UserGroups: []string{},
 	}
-	displayA2 := &sdk.Zone{
-		ProjectID: "Display",
+	homeLayer1ZoneD := &sdk.Zone{
+		ProjectID: "Home",
 		Layer: sdk.Layer{
-			LayerID:     "1",
+			LayerID:     "Layer1",
 			ParentZones: nil,
 			TotalWeight: 100,
 		},
-		ZoneID: "A2",
+		ZoneID: "D",
 
 		Weight: sdk.Weight{
-			Min: 81,
+			Min: 86,
 			Max: 100,
 		},
 
+		Value:      "D",
+		Tag:        "原主页",
+		UserGroups: []string{},
+	}
+
+	/*
+		Color
+	*/
+	colorLayer1ZoneA := &sdk.Zone{
+		ProjectID: "Color",
+		Layer: sdk.Layer{
+			LayerID:     "Layer1",
+			ParentZones: nil,
+			TotalWeight: 100,
+		},
+		ZoneID: "A",
+
+		Weight: sdk.Weight{
+			Min: 1,
+			Max: 25,
+		},
+
 		Value:      "A",
-		Tag:        "A2",
-		UserGroups: []string{"VIP", "Frequent"},
+		Tag:        "字体 黑色",
+		UserGroups: []string{},
 	}
+	colorLayer1ZoneB := &sdk.Zone{
+		ProjectID: "Color",
+		Layer: sdk.Layer{
+			LayerID:     "Layer1",
+			ParentZones: nil,
+			TotalWeight: 100,
+		},
+		ZoneID: "B",
 
-	labSearchZones := []*sdk.Zone{
-		/*
-				project search
-				实验规则：
-				all users
-				[1.100]
-					|
-					/\
-				/		\
-				|		|
-				A		B
-			layer "1"	layer "1"
-			[1,50]		[51,100]
-		*/
-		&sdk.Zone{
-			ProjectID: "search",
-			Layer: sdk.Layer{
-				LayerID:     "1",
-				ParentZones: nil,
-				TotalWeight: 10,
-			},
-			ZoneID: "A",
-
-			Weight: sdk.Weight{
-				Min: 1,
-				Max: 5,
-			},
-
-			Value: "A",
-			Tag:   "A",
+		Weight: sdk.Weight{
+			Min: 26,
+			Max: 75,
 		},
 
-		&sdk.Zone{
-			ProjectID: "search",
-			Layer: sdk.Layer{
-				LayerID:     "1",
-				ParentZones: nil,
-				TotalWeight: 10,
-			},
-			ZoneID: "B",
-
-			Weight: sdk.Weight{
-				Min: 6,
-				Max: 10,
-			},
-
-			Value: "B",
-			Tag:   "B",
+		Value:      "B",
+		Tag:        "字体 红色",
+		UserGroups: []string{},
+	}
+	colorLayer1ZoneC := &sdk.Zone{
+		ProjectID: "Color",
+		Layer: sdk.Layer{
+			LayerID:     "Layer1",
+			ParentZones: nil,
+			TotalWeight: 100,
 		},
+		ZoneID: "C",
+
+		Weight: sdk.Weight{
+			Min: 76,
+			Max: 100,
+		},
+
+		Value:      "C",
+		Tag:        "字体 白色",
+		UserGroups: []string{},
 	}
-	labOrderZones := []*sdk.Zone{
-		// project Order
-		orderA1,
-		orderA2_1,
-		orderA2_2,
-		orderB1_1,
-		orderB1_2,
-		orderB2_1,
-		orderB2_2,
-		orderB3,
+	colorLayer2ZoneD := &sdk.Zone{
+		ProjectID: "Color",
+		Layer: sdk.Layer{
+			LayerID: "Layer2",
+			ParentZones: []*sdk.Zone{
+				colorLayer1ZoneA,
+				colorLayer1ZoneB,
+				colorLayer1ZoneC,
+			},
+			TotalWeight: 100,
+		},
+		ZoneID: "D",
+
+		Weight: sdk.Weight{
+			Min: 1,
+			Max: 50,
+		},
+
+		Value:      "D",
+		Tag:        "背景 白色",
+		UserGroups: []string{},
 	}
-	labDisplayZones := []*sdk.Zone{
-		// project Display
-		displayA,
-		displayB,
-		displayA1,
-		displayA2,
+	colorLayer2ZoneE := &sdk.Zone{
+		ProjectID: "Color",
+		Layer: sdk.Layer{
+			LayerID: "Layer2",
+			ParentZones: []*sdk.Zone{
+				colorLayer1ZoneA,
+				colorLayer1ZoneB,
+				colorLayer1ZoneC,
+			},
+			TotalWeight: 100,
+		},
+		ZoneID: "E",
+
+		Weight: sdk.Weight{
+			Min: 51,
+			Max: 100,
+		},
+
+		Value:      "E",
+		Tag:        "背景 黑色",
+		UserGroups: []string{},
 	}
 
-	fmt.Print("创建 search 实验配置...")
+	/*
+		ComplexColor
+	*/
+	complexColorLayer1ZoneA := &sdk.Zone{
+		ProjectID: "ComplexColor",
+		Layer: sdk.Layer{
+			LayerID:     "Layer1",
+			ParentZones: nil,
+			TotalWeight: 100,
+		},
+		ZoneID: "A",
+
+		Weight: sdk.Weight{
+			Min: 1,
+			Max: 25,
+		},
+
+		Value:      "A",
+		Tag:        "字体 黑色",
+		UserGroups: []string{},
+	}
+	complexColorLayer1ZoneB := &sdk.Zone{
+		ProjectID: "ComplexColor",
+		Layer: sdk.Layer{
+			LayerID:     "Layer1",
+			ParentZones: nil,
+			TotalWeight: 100,
+		},
+		ZoneID: "B",
+
+		Weight: sdk.Weight{
+			Min: 26,
+			Max: 75,
+		},
+
+		Value:      "B",
+		Tag:        "字体 红色",
+		UserGroups: []string{},
+	}
+	complexColorLayer1ZoneC := &sdk.Zone{
+		ProjectID: "ComplexColor",
+		Layer: sdk.Layer{
+			LayerID:     "Layer1",
+			ParentZones: nil,
+			TotalWeight: 100,
+		},
+		ZoneID: "C",
+
+		Weight: sdk.Weight{
+			Min: 76,
+			Max: 100,
+		},
+
+		Value:      "C",
+		Tag:        "字体 白色",
+		UserGroups: []string{},
+	}
+	complexColorLayer2_1ZoneD := &sdk.Zone{
+		ProjectID: "ComplexColor",
+		Layer: sdk.Layer{
+			LayerID: "Layer2-1",
+			ParentZones: []*sdk.Zone{
+				complexColorLayer1ZoneA,
+			},
+			TotalWeight: 100,
+		},
+		ZoneID: "D",
+
+		Weight: sdk.Weight{
+			Min: 1,
+			Max: 100,
+		},
+
+		Value:      "D",
+		Tag:        "背景 白色",
+		UserGroups: []string{},
+	}
+	complexColorLayer2_2ZoneD := &sdk.Zone{
+		ProjectID: "ComplexColor",
+		Layer: sdk.Layer{
+			LayerID: "Layer2-2",
+			ParentZones: []*sdk.Zone{
+				complexColorLayer1ZoneB,
+			},
+			TotalWeight: 100,
+		},
+		ZoneID: "D",
+
+		Weight: sdk.Weight{
+			Min: 1,
+			Max: 50,
+		},
+
+		Value:      "D",
+		Tag:        "背景 白色",
+		UserGroups: []string{},
+	}
+	complexColorLayer2_2ZoneE := &sdk.Zone{
+		ProjectID: "ComplexColor",
+		Layer: sdk.Layer{
+			LayerID: "Layer2-2",
+			ParentZones: []*sdk.Zone{
+				complexColorLayer1ZoneB,
+			},
+			TotalWeight: 100,
+		},
+		ZoneID: "E",
+
+		Weight: sdk.Weight{
+			Min: 51,
+			Max: 100,
+		},
+
+		Value:      "E",
+		Tag:        "背景 黑色",
+		UserGroups: []string{},
+	}
+	complexColorLayer2_3ZoneE := &sdk.Zone{
+		ProjectID: "ComplexColor",
+		Layer: sdk.Layer{
+			LayerID: "Layer2-3",
+			ParentZones: []*sdk.Zone{
+				complexColorLayer1ZoneC,
+			},
+			TotalWeight: 100,
+		},
+		ZoneID: "E",
+
+		Weight: sdk.Weight{
+			Min: 1,
+			Max: 100,
+		},
+
+		Value:      "E",
+		Tag:        "背景 黑色",
+		UserGroups: []string{},
+	}
+
+	labHomeZones := []*sdk.Zone{
+		// project Home
+		homeLayer1ZoneA,
+		homeLayer1ZoneB,
+		homeLayer1ZoneC,
+		homeLayer1ZoneD,
+	}
+	labColorZones := []*sdk.Zone{
+		// project Color
+		colorLayer1ZoneA,
+		colorLayer1ZoneB,
+		colorLayer1ZoneC,
+		colorLayer2ZoneD,
+		colorLayer2ZoneE,
+	}
+	labComplexColorZones := []*sdk.Zone{
+		// project ComplexColor
+		complexColorLayer1ZoneA,
+		complexColorLayer1ZoneB,
+		complexColorLayer1ZoneC,
+		complexColorLayer2_1ZoneD,
+		complexColorLayer2_2ZoneD,
+		complexColorLayer2_2ZoneE,
+		complexColorLayer2_3ZoneE,
+	}
+
+	fmt.Print("创建 Home 实验配置...")
 	printPoint(3)
-	service.CreateABTestConfig("search", labSearchZones)
-	fmt.Print("创建 Order 实验配置...")
+	service.CreateABTestConfig("Home", labHomeZones)
+	fmt.Print("创建 Color 实验配置...")
 	printPoint(3)
-	service.CreateABTestConfig("Order", labOrderZones)
-	fmt.Print("创建 Display 实验配置...")
+	service.CreateABTestConfig("Color", labColorZones)
+	fmt.Print("创建 Complex Color 实验配置...")
 	printPoint(3)
-	service.CreateABTestConfig("Display", labDisplayZones)
+	service.CreateABTestConfig("ComplexColor", labComplexColorZones)
 }
 
 func printPoint(n int) {
