@@ -87,7 +87,7 @@ default:
 2. 开发人员开发实验业务代码，在返回首页的代码增加实验分支逻辑，通过sdk 对流量分流，代码结构如下：
 ```
 ...省略上下文进入设置字体颜色...
-targetZone := sdk.GetABTZone(hashkey, layerID)
+targetZone := sdk.GetABTZone(hashkey, "layer1 ID")
 switch targetZone.Value {
 case "A":
 	pushLabData(...)
@@ -102,7 +102,7 @@ default:
 	return setColor("默认字体颜色")
 }
 ...省略中间代码进入设置背景颜色...
-targetZone := sdk.GetABTZone(hashkey, layerID)
+targetZone := sdk.GetABTZone(hashkey, "layer2 ID")
 switch targetZone.Value {
 case "E":
 	pushLabData(...)
@@ -151,7 +151,7 @@ targetZone := sdk.GetABTZone(hashkey, "Layer1 ID")
 }
 
 func Layer2-1(...) {
-targetZone := sdk.GetABTZone(hashkey, "Layer1 ID")
+targetZone := sdk.GetABTZone(hashkey, "Layer2-1 ID")
 	switch targetZone.Value {
 	case "D":
 		return setBKColor("背景 白色")
@@ -161,7 +161,7 @@ targetZone := sdk.GetABTZone(hashkey, "Layer1 ID")
 }
 
 func Layer2-2(...) {
-targetZone := sdk.GetABTZone(hashkey, "Layer1 ID")
+targetZone := sdk.GetABTZone(hashkey, "Layer2-2 ID")
 	switch targetZone.Value {
 	case "D":
 		return setBKColor("背景 白色")
@@ -173,7 +173,7 @@ targetZone := sdk.GetABTZone(hashkey, "Layer1 ID")
 }
 
 func Layer2-3(...) {
-targetZone := sdk.GetABTZone(hashkey, "Layer1 ID")
+targetZone := sdk.GetABTZone(hashkey, "Layer2-3 ID")
 	switch targetZone.Value {
 	case "E" :
 		return setColor("字体 黑色")
