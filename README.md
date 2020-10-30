@@ -31,10 +31,10 @@ AB测试是为Web或App界面或流程制作两个（A/B）或多个（A/B/n）�
 
 # AB Test SDK 中 hash 算法
 1. 	流量分流的方式：
-	- userID + layerID // userID是对用户随机分流，layerID是为了进入下一层后又随机分流
-	- cookie(deviceID等) + layerID // userID可以使用其他的全局唯一ID，如 deviceID
-	- userID + Date + layerID  // Date 是为了同同一个用户可以按时间进行重新流量分配，如Date等于日期的时候，同一个用户每天进行的实验是重新随机的
-	- cookie(deviceID等) + Date + layerID
+	- hash(userID, layerID) : userID是对用户随机分流，layerID是为了进入下一层后又随机分流
+	- hash(cookie(deviceID等), layerID) : userID可以使用其他的全局唯一ID，如 deviceID
+	- hash(userID, Date, layerID) : Date 是为了同同一个用户可以按时间进行重新流量分配，如Date等于日期的时候，同一个用户每天进行的实验是重新随机的
+	- hash(cookie(deviceID等), Date, layerID)
 
 # AB Test SDK 中 实验配置 本地缓存
 1. sdk 通过一个线程轮询AB test server的实验配置，并缓存本地
@@ -192,9 +192,13 @@ targetZone := sdk.GetABTZone(hashkey, "Layer1 ID")
 1. go run main.go
 
 # 性能设计
-// TODO
+1. 本地缓存: 目前只有本地内存缓存, 缓解server端的压力。缓存通过单独的一个线程轮询server同步配置，有一定延迟，目前不作配置更新的推送。
+2. 并发性能: 目前是单点服务，server仍然存在并发请求的瓶颈。
+
+
 # 稳定性设计 
-// TODO
+1. 网络超时问题，由于网络请求是在单独的线程进行，因此不会阻塞业务。
+2. 单点故障问题，同上。但是sdk请求返回结果为空，业务必须增加默认策略分支，保证业务正常。
 
 # 参考链接
 ```
