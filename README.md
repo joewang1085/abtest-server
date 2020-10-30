@@ -17,8 +17,8 @@ AB测试是为Web或App界面或流程制作两个（A/B）或多个（A/B/n）�
 5. 实验结果选择出最优策略后，先通过AB test server将流量全部导入最优策略的分支
 6. 开发人员删除abtest 代码，迭代上线   
 如下图：
-![avatar](system.png)
-![avatar](system2.png)
+![avatar](picture/system.png)
+![avatar](picture/system2.png)
 
 # AB Test SDK 中相关概念说明
 1. Zone: 域，属于某一个层，同一层的不同域流量互斥，且同一层的所有域的流量总和等于进入该层的全部流量。域横向切割一个层的流量，为该层测试“因素”的实验场景之一。
@@ -26,7 +26,7 @@ AB测试是为Web或App界面或流程制作两个（A/B）或多个（A/B/n）�
 3. 起始域为全流量
 4. 起始层，流量来自于起始域，为全流量
 5. 同过同一层域的切割，与不同层的正交，可以进行多个因素任意的组合对比测试。如下图： 
-![avatar](zone.png)
+![avatar](picture/zone.png)
 
 
 # AB Test SDK 中 hash 算法
@@ -45,7 +45,7 @@ AB测试是为Web或App界面或流程制作两个（A/B）或多个（A/B/n）�
 # 单一因素AB test设计 
 举例: APP 新主页首页AB Test 设计.  
 1. PM通过AB test server 生成实验配置，并将需求告知开发，实验配置构思如下：
-![avatar](one.png)  
+![avatar](picture/one.png)  
 2. 开发人员开发实验业务代码，在返回首页的代码增加实验分支逻辑，通过sdk 对流量分流，代码结构如下：
 ```
 ...省略上下文,进入返回主页的代码逻辑...
@@ -83,7 +83,7 @@ default:
 # 两个因素AB test设计
 举例: 页面字体颜色与背景色 AB test 设计.  
 1. PM通过AB test server 生成实验配置，并将需求告知开发，实验配置构思如下：
-![avatar](two.png)  
+![avatar](picture/two.png)  
 2. 开发人员开发实验业务代码，在返回首页的代码增加实验分支逻辑，通过sdk 对流量分流，代码结构如下：
 ```
 ...省略上下文进入设置字体颜色...
@@ -123,11 +123,11 @@ default:
 
 特殊场景：如果背景色只有“黑色”和“白色”，而字体与背景不能同颜色，否则功能异常.   
 所以流量分为 4 种组合：AD、BD、BE、CE.分别对比四种种组合的实验结果，选取最优组合策略.    
-![avatar](three.png)     
+![avatar](picture/three.png)     
 这种实验场景暂时不支持，因为进入每一层的流量之后是又随机分配的，因此上一层的域无法指定到下一层的域级别，只能指定到下一层，然后再被随机分流。因此域只能指定一个下一层。         
 
 但是可以将上述需求设计成如下所示：  
-![avatar](four.png) 
+![avatar](picture/four.png) 
 同时需要开发在业务里面实现上述逻辑，示例如下：   
 ```
 
