@@ -56,19 +56,19 @@ switch targetZone.Value {
 case "A":
 	// 数据采点，记录用户使用“原页面”。数据采点也可以在一个公共收口出统一上报，这样更合理。
 	pushLabData(...)
-	return "原主页"
+	return setHome("原主页")
 case "B" :
 	pushLabData(...)
-	return "新主页"
+	return setHome("新主页")
 case "C":
 	pushLabData(...)
-	return "原主页"
+	return setHome("原主页")
 case "D":
 	pushLabData(...)
-	return "原主页"
+	return setHome("原主页")
 // default 分支必须要有，保证业务正常
 default:
-	return "原主页"
+	return setHome("原主页")
 }
 ...省略上下文...
 ```
@@ -91,27 +91,27 @@ targetZone := sdk.GetABTZone(hashkey, layerID)
 switch targetZone.Value {
 case "A":
 	pushLabData(...)
-	return "字体 黑色"
+	return setColor("字体 黑色")
 case "B" :
 	pushLabData(...)
-	return "字体 红色"
+	return setColor("字体 红色")
 case "C":
 	pushLabData(...)
-	return "字体 白色"
+	return setColor("字体 白色")
 default:
-	return "默认字体颜色"
+	return setColor("默认字体颜色")
 }
 ...省略中间代码进入设置背景颜色...
 targetZone := sdk.GetABTZone(hashkey, layerID)
 switch targetZone.Value {
 case "E":
 	pushLabData(...)
-	return "背景 黄色"
+	return setColor("背景 黄色")
 case "D" :
 	pushLabData(...)
-	return "背景 绿色"
+	return setColor("背景 绿色")
 default:
-	return "默认字体颜色"
+	return setColor("默认字体颜色")
 }
 ...省略上下文...
 ```
