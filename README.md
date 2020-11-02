@@ -194,6 +194,12 @@ targetZone := sdk.GetABTZone(hashkey, "Layer2-3 ID")
 2. 数据上报可以在最后统一上报，因此需要在远程调用时通过ctx将数据传递下去。也可以在每个进程单独上报，这样就不需要通过ctx传递数据，尤其是上报的数据较大时。
 3. 其他类似。
 
+# 具体使用实例参考 sdk 的example
+- lab_home.go : 单一因素实验
+- lab_color1.go : 两个因素组合实验
+- lab_color2.go : 复杂的两个因素组合实验
+- lab_rpc.go : 跨进程实验
+
 # ab test server demo 说明
 1. db.Datainit() is a mock of database
 
