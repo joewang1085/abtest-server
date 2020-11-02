@@ -20,19 +20,22 @@ AB测试是为Web或App界面或流程制作两个（A/B）或多个（A/B/n）�
 ![avatar](picture/system.png)
 ![avatar](picture/system2.png)
 
+# 注意
+目前支持golang sdk  
+
 # AB Test SDK 中相关概念说明
 1. Zone: 域，属于某一个层，同一层的不同域流量互斥，且同一层的所有域的流量总和等于进入该层的全部流量。域横向切割一个层的流量，为该层测试“因素”的实验场景之一。
-2. Layer: 层，流量来自一个或者多个域，这些域被称为“父域”。在同一层中进行一个“因素”的AB test实验。不同层的流量正交，可以进行“多因素”的组合对比测试。流量在层中随机分配，因此同一个“父域”只能指向一个“下层”，无法同时指向两个不同的“下层”。  
+2. Layer: 层，流量来自一个或者多个域，这些域被称为“父域”。在同一层中进行一个“因素”的AB test实验。不同层的流量正交，可以进行“多因素”的组合对比测试。流量在层中随机分配，因此同一个“父域”只能指向一个“下层”，无法同时指向两个不同的“下层”。 同时，“父域”的流量只能指向“层”，无法指定到“下层的域”，因为，进入“层”的流量会再次随机分配。 
 3. 起始域为全流量
 4. 起始层，流量来自于起始域，为全流量
-5. 同过同一层域的切割，与不同层的正交，可以进行多个因素任意的组合对比测试。如下图： 
+5. 通过同一层域的切割，与不同层的正交，可以进行多个因素任意的组合对比测试。如下图： 
 ![avatar](picture/zone.png)
 
 
 # AB Test SDK 中 hash 算法
 1. 	流量分流的方式：
 	- hash(userID, layerID) : userID是对用户随机分流，layerID是为了进入下一层后又随机分流
-	- hash(cookie(deviceID等), layerID) : userID可以使用其他的全局唯一ID，如 deviceID
+	- hash(cookie(deviceID等), layerID) : 也可以使用其他的全局唯一ID，如 deviceID
 	- hash(userID, Date, layerID) : Date 是为了同同一个用户可以按时间进行重新流量分配，如Date等于日期的时候，同一个用户每天进行的实验是重新随机的
 	- hash(cookie(deviceID等), Date, layerID)
 
@@ -71,7 +74,7 @@ default:
 	return setHome("原主页")
 }
 ...省略上下文...
-``` 
+```
 3. 代码部署上线，PM 通过 实时或者离线数据对实验结果进行统计分析，得出结论：
 - C:D结果相对稳定
 - B:CD结果，B更好
@@ -184,6 +187,12 @@ targetZone := sdk.GetABTZone(hashkey, "Layer2-3 ID")
 ...省略上下文...
 ```
 
+# 跨进城 AB test 设计
+举例: 显示主题 AB Test 设计.  
+1. PM通过AB test server 生成实验配置，并将需求告知开发，实验配置构思如下：
+![avatar](picture/five.png)   
+2. 数据上报可以在最后统一上报，因此需要在远程调用时通过ctx将数据传递下去。也可以在每个进程单独上报，这样就不需要通过ctx传递数据，尤其是上报的数据较大时。
+3. 其他类似。
 
 # ab test server demo 说明
 1. db.Datainit() is a mock of database
@@ -198,7 +207,7 @@ targetZone := sdk.GetABTZone(hashkey, "Layer2-3 ID")
 
 # 稳定性设计 
 1. 网络超时问题，由于网络请求是在单独的线程进行，因此不会阻塞业务。
-2. 单点故障问题，同上。但是sdk请求返回结果为空，业务必须增加默认策略分支，保证业务正常。
+2. 单点故障问题，同上。但是sdk请求返回结果为空，因此业务必须增加默认策略分支，保证业务正常。
 
 # 参考链接
 ```
