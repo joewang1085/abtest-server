@@ -12,7 +12,7 @@ AB测试是为Web或App界面或流程制作两个（A/B）或多个（A/B/n）�
 # AB Test 实验流程与架构
 1. PM 通过AB test server创建生成实验配置文件。
 2. 开发人员根据实验配置，通过abtest sdk实现业务分支控制，并上线。（需要人为约定规范，开发需要能理解实验配置，因此建议实验设计是开发和PM一起制定）
-3. 用户流量进入实验，sdk会获取AB test server 的实验配置，并缓存本地，然后进行hash和取模运算，进行随机分流，使用户进入不同的体验。前端预留用户体验评价的入口，后台业务服务同时进行数据采点。
+3. 用户流量进入业务，sdk会获取AB test server 的实验配置，并缓存本地，然后进行hash和取模运算，进行随机分流，使用户进入不同的实验。前端预留用户体验评价的入口，后台业务服务同时进行数据采点。
 4. PM 通过AB test server 进行实验数据的实时或离线观察
 5. 实验结果选择出最优策略后，先通过AB test server将流量全部导入最优策略的分支
 6. 开发人员删除abtest 代码，迭代上线   
@@ -21,7 +21,7 @@ AB测试是为Web或App界面或流程制作两个（A/B）或多个（A/B/n）�
 ![avatar](picture/system2.png)
 
 # 注意
-目前支持golang sdk  
+目前只支持golang sdk  
 
 # AB Test SDK 中相关概念说明
 1. Zone: 域，属于某一个层，同一层的不同域流量互斥，且同一层的所有域的流量总和等于进入该层的全部流量。域横向切割一个层的流量，为该层测试“因素”的实验场景之一。
@@ -187,7 +187,7 @@ targetZone := sdk.GetABTZone(hashkey, "Layer2-3 ID")
 ...省略上下文...
 ```
 
-# 跨进城 AB test 设计
+# 跨进程 AB test 设计
 举例: 显示主题 AB Test 设计.  
 1. PM通过AB test server 生成实验配置，并将需求告知开发，实验配置构思如下：
 ![avatar](picture/five.png)   
