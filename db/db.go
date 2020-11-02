@@ -327,6 +327,153 @@ func DataInit() {
 		UserGroups: []string{},
 	}
 
+	/*
+		Theme
+	*/
+	themeLayer1ZoneA := &sdk.Zone{
+		ProjectID: "Theme",
+		Layer: sdk.Layer{
+			LayerID:     "Layer1",
+			ParentZones: nil,
+			TotalWeight: 100,
+		},
+		ZoneID: "A",
+
+		Weight: sdk.Weight{
+			Min: 1,
+			Max: 50,
+		},
+
+		Value:      "A",
+		Tag:        "Theme one",
+		UserGroups: []string{},
+	}
+	themeLayer1ZoneB := &sdk.Zone{
+		ProjectID: "Theme",
+		Layer: sdk.Layer{
+			LayerID:     "Layer1",
+			ParentZones: nil,
+			TotalWeight: 100,
+		},
+		ZoneID: "B",
+
+		Weight: sdk.Weight{
+			Min: 51,
+			Max: 100,
+		},
+
+		Value:      "B",
+		Tag:        "Theme two",
+		UserGroups: []string{},
+	}
+	themeLayer2ZoneC := &sdk.Zone{
+		ProjectID: "Theme",
+		Layer: sdk.Layer{
+			LayerID: "Layer2",
+			ParentZones: []*sdk.Zone{
+				themeLayer1ZoneA,
+				themeLayer1ZoneB,
+			},
+			TotalWeight: 100,
+		},
+		ZoneID: "C",
+
+		Weight: sdk.Weight{
+			Min: 1,
+			Max: 33,
+		},
+
+		Value:      "C",
+		Tag:        "字体 黑色",
+		UserGroups: []string{},
+	}
+	themeLayer2ZoneD := &sdk.Zone{
+		ProjectID: "Theme",
+		Layer: sdk.Layer{
+			LayerID: "Layer2",
+			ParentZones: []*sdk.Zone{
+				themeLayer1ZoneA,
+				themeLayer1ZoneB,
+			},
+			TotalWeight: 100,
+		},
+		ZoneID: "D",
+
+		Weight: sdk.Weight{
+			Min: 34,
+			Max: 66,
+		},
+
+		Value:      "D",
+		Tag:        "字体 红色",
+		UserGroups: []string{},
+	}
+	themeLayer2ZoneE := &sdk.Zone{
+		ProjectID: "Theme",
+		Layer: sdk.Layer{
+			LayerID: "Layer2",
+			ParentZones: []*sdk.Zone{
+				themeLayer1ZoneA,
+				themeLayer1ZoneB,
+			},
+			TotalWeight: 100,
+		},
+		ZoneID: "E",
+
+		Weight: sdk.Weight{
+			Min: 67,
+			Max: 100,
+		},
+
+		Value:      "E",
+		Tag:        "字体 白色",
+		UserGroups: []string{},
+	}
+	themeLayer3ZoneF := &sdk.Zone{
+		ProjectID: "Theme",
+		Layer: sdk.Layer{
+			LayerID: "Layer3",
+			ParentZones: []*sdk.Zone{
+				themeLayer2ZoneC,
+				themeLayer2ZoneD,
+				themeLayer2ZoneE,
+			},
+			TotalWeight: 100,
+		},
+		ZoneID: "F",
+
+		Weight: sdk.Weight{
+			Min: 1,
+			Max: 50,
+		},
+
+		Value:      "F",
+		Tag:        "背景 蓝色",
+		UserGroups: []string{},
+	}
+	themeLayer3ZoneG := &sdk.Zone{
+		ProjectID: "Theme",
+		Layer: sdk.Layer{
+			LayerID: "Layer3",
+			ParentZones: []*sdk.Zone{
+				themeLayer2ZoneC,
+				themeLayer2ZoneD,
+				themeLayer2ZoneE,
+			},
+			TotalWeight: 100,
+		},
+		ZoneID: "G",
+
+		Weight: sdk.Weight{
+			Min: 51,
+			Max: 100,
+		},
+
+		Value:      "G",
+		Tag:        "背景 绿色",
+		UserGroups: []string{},
+	}
+
 	labHomeZones := []*sdk.Zone{
 		// project Home
 		homeLayer1ZoneA,
@@ -352,16 +499,29 @@ func DataInit() {
 		complexColorLayer2_2ZoneE,
 		complexColorLayer2_3ZoneE,
 	}
+	labThemeZones := []*sdk.Zone{
+		// project Theme
+		themeLayer1ZoneA,
+		themeLayer1ZoneB,
+		themeLayer2ZoneC,
+		themeLayer2ZoneD,
+		themeLayer2ZoneE,
+		themeLayer3ZoneF,
+		themeLayer3ZoneG,
+	}
 
 	fmt.Print("创建 Home 实验配置...")
-	printPoint(3)
+	printPoint(1)
 	service.CreateABTestConfig("Home", labHomeZones)
 	fmt.Print("创建 Color 实验配置...")
-	printPoint(3)
+	printPoint(1)
 	service.CreateABTestConfig("Color", labColorZones)
 	fmt.Print("创建 Complex Color 实验配置...")
-	printPoint(3)
+	printPoint(1)
 	service.CreateABTestConfig("ComplexColor", labComplexColorZones)
+	fmt.Print("创建 Theme 实验配置...")
+	printPoint(1)
+	service.CreateABTestConfig("Theme", labThemeZones)
 }
 
 func printPoint(n int) {
