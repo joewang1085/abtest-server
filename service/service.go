@@ -18,6 +18,11 @@ var (
 func CreateABTestConfig(projectID string, zones []*sdk.Zone) {
 	fmt.Println("DBPath", DBPath)
 
+	// 校验配置正确性
+	if !checkProjectABTConfigValid(projectID, zones) {
+		log.Fatal("checkProjectABTConfigValid fatal, projectID:", projectID)
+	}
+
 	// 入库
 	content, err := json.Marshal(zones)
 	if err != nil {
@@ -25,10 +30,6 @@ func CreateABTestConfig(projectID string, zones []*sdk.Zone) {
 	}
 	ioutil.WriteFile(DBPath+projectID+".json", content, 0644)
 
-	// 校验配置正确性
-	if !checkProjectABTConfigValid(projectID, zones) {
-		log.Fatal("checkProjectABTConfigValid fatal, projectID:", projectID)
-	}
 }
 
 // CheckProjectABTConfigValid 校验实验配置正确性
